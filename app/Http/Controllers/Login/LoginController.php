@@ -56,6 +56,6 @@ class LoginController extends Controller
     public function loginOn(){
         $key='login_token';
         $i=Redis::get($key);
-        dd($i);
+        var_dump($i);
     }
 }
