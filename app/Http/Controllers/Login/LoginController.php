@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Login;
 use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 use App\Model\UserModel;
+use Illuminate\Support\Facades\Redis;
 
 class LoginController extends Controller
 {
@@ -47,5 +48,14 @@ class LoginController extends Controller
             echo "CURL 错误码：".$error;exit;
         }
         curl_close($curl);
+    }
+
+    /**
+     * 验证是否登陆
+     */
+    public function loginOn(){
+        $key='login_token';
+        $i=Redis::get($key);
+        dd($i);
     }
 }

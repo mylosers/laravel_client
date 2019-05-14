@@ -76,9 +76,10 @@
 						dataType:'json',
 						success:function(msg){
 							alert(msg.msg);
-							mui.openWindow({
-								url: './login.html', 
-							  });
+							if(msg.error==0){
+								mui.openWindow({
+									url: './login.html', 
+								  });
 						}
 					});
 					return false;
