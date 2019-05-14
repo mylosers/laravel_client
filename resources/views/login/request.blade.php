@@ -1,22 +1,68 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html class="ui-page-login">
+
 <head>
-    <meta charset="UTF-8">
-    <title>注册</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        .area {
+            margin: 20px auto 0px auto;
+        }
+        .mui-input-group:first-child {
+            margin-top: 20px;
+        }
+        .mui-input-group label {
+            width: 22%;
+        }
+        .mui-input-row label~input,
+        .mui-input-row label~select,
+        .mui-input-row label~textarea {
+            width: 78%;
+        }
+        .mui-checkbox input[type=checkbox],
+        .mui-radio input[type=radio] {
+            top: 6px;
+        }
+        .mui-content-padded {
+            margin-top: 25px;
+        }
+        .mui-btn {
+            padding: 10px;
+        }
+
+    </style>
 </head>
+
 <body>
-<form>
-    <font>名称：</font>
-    <input type="text" id="name"><br>
-    <font>邮箱：</font>
-    <input type="email" id="email"><br>
-    <font>密码：</font>
-    <input type="password" id="pwd"><br>
-    <button id="btn">注册</button>
-</form>
-</body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">注册</h1>
+</header>
+<div class="mui-content">
+    <form class="mui-input-group">
+        <div class="mui-input-row">
+            <label>账号</label>
+            <input id='name' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+        </div>
+        <div class="mui-input-row">
+            <label>邮箱</label>
+            <input id='email' type="email" class="mui-input-clear mui-input" placeholder="请输入邮箱">
+        </div>
+        <div class="mui-input-row">
+            <label>密码</label>
+            <input id='pwd' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+        </div>
+    </form>
+    <div class="mui-content-padded">
+        <button id='btn' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+    </div>
+</div>
 <script src="js/jquery-3.3.1.min.js"></script>
-</html>
+<script src="js/mui.min.js"></script>
+<script src="js/app_login.js"></script>
 <script>
     $(function(){
         $('#btn').click(function(){
@@ -27,6 +73,7 @@
                 url:'/requestAdd',
                 type:"post",
                 data:{name:name,email:email,pwd:pwd},
+                dataType:'json',
                 success:function(msg){
                     alert(msg.msg);
                     window.location.href="/login";
@@ -36,3 +83,6 @@
         })
     })
 </script>
+</body>
+
+</html>

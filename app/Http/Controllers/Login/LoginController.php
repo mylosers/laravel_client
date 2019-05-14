@@ -35,7 +35,7 @@ class LoginController extends Controller
         $b64=base64_encode($enc_data);
 //        echo $enc_data;echo "<br>";
 //        echo $b64;die;
-        $url = 'http://vm.api.cn/login';
+        $url = 'http://api.myloser.club/login';
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_POST, 1);
