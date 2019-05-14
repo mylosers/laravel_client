@@ -39,7 +39,7 @@ class RequestController extends Controller
         ];
         //加密
         $json_str=json_encode($data);
-        $k=openssl_pkey_get_private('file://'.storage_path('app/keys/private.pem'));
+        $k=openssl_pkey_get_private('file://keys/private.pem');
         //加密
         openssl_private_encrypt($json_str,$enc_data,$k);
         $b64=base64_encode($enc_data);

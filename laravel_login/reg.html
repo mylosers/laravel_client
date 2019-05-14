@@ -70,20 +70,19 @@
 					var email=$('#email').val();
 					var pwd=$('#password').val();
 					$.ajax({
-						url:'/requestAdd',
+						url:'http://client.myloser.club/requestAdd',
 						type:"post",
 						data:{name:name,email:email,pwd:pwd},
 						dataType:'json',
 						success:function(msg){
 							alert(msg.msg);
-							// window.location.href="/login";
 						}
 					});
 					return false;
 				})
 			})
 		</script>
-		<script>
+		<!-- <script>
 			(function($, doc) {
 				$.init();
 				$.plusReady(function() {
@@ -99,11 +98,6 @@
 							password: passwordBox.value,
 							email: emailBox.value
 						};
-						var passwordConfirm = passwordConfirmBox.value;
-						if (passwordConfirm != regInfo.password) {
-							plus.nativeUI.toast('密码两次输入不一致');
-							return;
-						}
 						app.reg(regInfo, function(err) {
 							if (err) {
 								plus.nativeUI.toast(err);
@@ -130,7 +124,7 @@
 					});
 				});
 			}(mui, document));
-		</script>
+		</script> -->
 	</body>
 
 </html>
