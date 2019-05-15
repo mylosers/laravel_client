@@ -27,6 +27,7 @@ Route::get('/sign','Base\BaseController@sign');  //测试解密-3
 
 Route::get('/request','Login\RequestController@request');  //注册页面
 Route::post('/requestAdd','Login\RequestController@requestAdd');  //注册执行
+Route::post('/requestInfo','Login\RequestController@requestInfo');  //注册执行
 Route::get('/login','Login\LoginController@Login');  //登陆页面
 Route::post('/loginAdd','Login\LoginController@loginAdd');  //登陆执行
 
