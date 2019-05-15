@@ -30,6 +30,7 @@ Route::post('/requestAdd','Login\RequestController@requestAdd');  //注册执行
 Route::post('/requestInfo','Login\RequestController@requestInfo');  //注册执行
 Route::get('/login','Login\LoginController@Login');  //登陆页面
 Route::post('/loginAdd','Login\LoginController@loginAdd');  //登陆执行
+Route::post('/loginInfo','Login\LoginController@loginInfo');  //登陆执行
 
 Route::get('/loginOn','Login\LoginController@loginOn');  //登陆执行
 

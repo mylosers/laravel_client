@@ -64,12 +64,49 @@ class RequestController extends Controller
      * 注册返回
      */
     public function requestInfo(){
+//        dd(1);
         //解密
         $data = file_get_contents('php://input');
-        $enc_data=base64_decode($data);
-        $pk=openssl_get_publickey('file://keys/public.pem');
-        openssl_public_decrypt($enc_data,$dec_data,$pk);
-        $data=json_decode($dec_data,true);
-        dd($data);
+//        $enc_data=base64_decode($data);
+//        $pk=openssl_get_publickey('file://keys/public.pem');
+//        openssl_public_decrypt($enc_data,$dec_data,$pk);
+        $data=json_decode($data,true);
+        $name=$data['name'];
+        $email=$data['email'];
+        $pwd=$data['pwd'];
+        if($name==""||$email==""||$pwd==""){
+            $res=[
+                'error'=>50001,
+                'msg'=>'数据不能为空',
+            ];
+            return json_encode($res,JSON_UNESCAPED_UNICODE);
+        }
+        $email_info=UserModel::where(['email'=>$email])->first();
+        if($email_info){
+            $res=[
+                'error'=>50002,
+                'msg'=>'此邮箱已被注册'
+            ];
+            return json_encode($res,JSON_UNESCAPED_UNICODE);
+        }
+        $data=[
+            'name'=>$name,
+            'email'=>$email,
+            'pwd'=>password_hash($pwd,PASSWORD_BCRYPT),
+            'add_time'=>time()
+        ];
+        $info=UserModel::insertGetId($data);
+        if($info){
+            $res=[
+                'error'=>0,
+                'msg'=>'注册成功'
+            ];
+        }else{
+            $res=[
+                'error'=>50003,
+                'msg'=>'注册失败'
+            ];
+        }
+        return json_encode($res,JSON_UNESCAPED_UNICODE);
     }
 }
