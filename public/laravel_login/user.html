@@ -9,8 +9,8 @@
 	</head>
 
 	<body>
-		<script src="js/mui.min.js"></script>
 		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
@@ -27,25 +27,31 @@
   </div>
 </div>
 <script>
+	$(document).ready(function(){
 		var gallery = mui('.mui-slider');
 		gallery.slider({
 		interval:1000//自动轮播周期，若为0则不自动播放，默认为0；
 		});
-		$(function(){
-			$.ajax({
-			    url:'http://client.myloser.club/loginOn',
-			    type:"post",
-			    dataType:'json',
-			    success:function(msg){
+		mui.plusReady(function(){		
+			var token=plus.storage.getItem("token");
+			var id=plus.storage.getItem("id");
+			alert(token);
+			alert(id);
+			/* $.ajax({
+				url:'http://client.myloser.club/loginOn',
+				type:"post",
+				dataType:'json',
+				success:function(msg){
 					if(msg.error==50005){
 						alert(msg.msg)
-						mui.openWindow({
-							url: './login.html', 
-						  });
+						// mui.openWindow({
+						// 	
+						// });
 					}
-			    }
-			});
-		})
+				}
+			}); */
+		});
+	});
 </script>
 	</body>
 

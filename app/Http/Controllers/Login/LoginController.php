@@ -54,8 +54,6 @@ class LoginController extends Controller
      * 验证是否登陆
      */
     public function loginOn(){
-        $key='login_token';
-        $i=Redis::get($key);
-        var_dump($i);
+
     }
 }

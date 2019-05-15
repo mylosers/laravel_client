@@ -122,16 +122,18 @@
             var email=$('#email').val();
             var pwd=$('#pwd').val();
             $.ajax({
-                url:'http://client.myloser.club/loginAdd',
+                url:'http://vm.api.cn/loginTwo',
                 type:"post",
                 data:{email:email,pwd:pwd},
                 dataType:'json',
                 success:function(msg){
                     alert(msg.msg)
 					if(msg.error==0){
+						plus.storage.setItem("token",""+msg.token+"");
+						plus.storage.setItem("id",""+msg.id+"");
 						mui.openWindow({
-							url: './user.html', 
-						  });
+							url:'./user.html',
+						});
 					}
                 }
             });
